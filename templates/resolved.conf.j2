@@ -1,0 +1,64 @@
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+#
+# Entries in this file show the compile time defaults.
+# You can change settings by editing this file.
+# Defaults can be restored by simply deleting this file.
+#
+# See resolved.conf(5) for details
+
+[Resolve]
+{% if systemd_resolved_servers is defined %}
+DNS={{ systemd_resolved_servers | join(" ") }}
+{% else %}
+#DNS=
+{% endif %}
+{% if systemd_resolved_fallback_servers is defined %}
+FallbackDNS={{ systemd_resolved_fallback_servers | join(" ") }}
+{% else %}
+#FallbackDNS=1.1.1.1 9.9.9.10 8.8.8.8 2606:4700:4700::1111 2620:fe::10 2001:4860:4860::8888
+{% endif %}
+{% if systemd_resolved_domains is defined %}
+Domains={{ systemd_resolved_domains | join(" ") }}
+{% else %}
+#Domains=
+{% endif %}
+{% if systemd_resolved_llmnr is defined %}
+LLMNR={{ systemd_resolved_llmnr }}
+{% else %}
+#LLMNR=yes
+{% endif %}
+{% if systemd_resolved_multicast_dns is defined %}
+MulticastDNS={{ systemd_resolved_multicast_dns }}
+{% else %}
+#MulticastDNS=yes
+{% endif %}
+{% if systemd_resolved_dnssec is defined %}
+DNSSEC={{ systemd_resolved_dnssec }}
+{% else %}
+#DNSSEC=allow-downgrade
+{% endif %}
+{% if systemd_resolved_dns_over_tls is defined %}
+DNSOverTLS={{ systemd_resolved_dns_over_tls }}
+{% else %}
+#DNSOverTLS=no
+{% endif %}
+{% if systemd_resolved_cache is defined %}
+Cache={{ systemd_resolved_cache | ternary('yes', 'no') }}
+{% else %}
+#Cache=yes
+{% endif %}
+{% if systemd_resolved_dns_stub_listener is defined %}
+DNSStubListener={{ systemd_resolved_dns_stub_listener }}
+{% else %}
+#DNSStubListener=yes
+{% endif %}
+{% if systemd_resolved_read_etc_hosts is defined %}
+ReadEtcHosts={{ systemd_resolved_read_etc_hosts | ternary('yes', 'no') }}
+{% else %}
+#ReadEtcHosts=yes
+{% endif %}
