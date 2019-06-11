@@ -73,7 +73,7 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- src: idiv-biodiversity.systemd-resolved
+- src: idiv-biodiversity.systemd_resolved
 
 ...
 ```
@@ -95,7 +95,7 @@ Write a top-level playbook:
   hosts: head
 
   roles:
-    - role: idiv-biodiversity.systemd-resolved
+    - role: idiv-biodiversity.systemd_resolved
       tags:
         - systemd-resolved
 
@@ -111,7 +111,7 @@ Define the role dependency in `meta/main.yml`:
 
 dependencies:
 
-  - role: idiv-biodiversity.systemd-resolved
+  - role: idiv-biodiversity.systemd_resolved
     tags:
       - systemd-resolved
 
