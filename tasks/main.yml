@@ -12,19 +12,18 @@
     owner: root
     group: root
     mode: 0644
-  register: systemd_resolved_configuration
-
-- name: restart systemd-resolved
-  systemd:
-    name: systemd-resolved
-    state: restarted
-  when: systemd_resolved_configuration.changed
+  register: __systemd_resolved_configuration
 
 - name: enable systemd-resolved service and assure it is started
   systemd:
     name: systemd-resolved
     enabled: yes
-    state: started
+    state: >-
+      {{
+        __systemd_resolved_configuration.changed |
+          default(False) |
+          ternary("restarted", "started")
+      }}
 
 - name: link /etc/resolv.conf to stub
   file:
