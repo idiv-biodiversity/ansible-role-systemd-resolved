@@ -1,5 +1,6 @@
 ---
 
-skip_list: []
+skip_list:
+  - name[casing]
 
 ...
