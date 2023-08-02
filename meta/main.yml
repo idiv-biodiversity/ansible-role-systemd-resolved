@@ -3,7 +3,9 @@
 dependencies: []
 
 galaxy_info:
-  role_name: systemd-resolved
+  role_name: systemd_resolved
+  namespace: idiv_biodiversity
+
   author: Christian Krause
   description: 'install and configure systemd-resolved'
   company: German Centre for Integrative Biodiversity Research (iDiv)
