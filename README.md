@@ -63,7 +63,7 @@ For more information, read `man 5 resolved.conf`.
 Dependencies
 ------------
 
-None.
+- collection **ansible.posix**
 
 Example Playbook
 ----------------

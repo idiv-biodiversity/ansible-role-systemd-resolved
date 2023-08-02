@@ -1,0 +1,27 @@
+---
+
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+
+  - name: archlinux
+    image: carlodepieri/docker-archlinux-ansible:latest
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    privileged: yes
+    pre_build_image: yes
+
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      archlinux:
+        ansible_user: ansible
+
+verifier:
+  name: ansible
+
+...
