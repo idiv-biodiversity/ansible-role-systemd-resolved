@@ -16,7 +16,13 @@
 
 [Resolve]
 {% if systemd_resolved_servers is defined %}
+{% if systemd_resolved_servers is iterable and
+      systemd_resolved_servers is not mapping and
+      systemd_resolved_servers is not string %}
 DNS={{ systemd_resolved_servers | join(" ") }}
+{% else %}
+DNS={{ systemd_resolved_servers }}
+{% endif %}
 {% else %}
 # Some examples of DNS servers which may be used for DNS= and FallbackDNS=:
 # Cloudflare: 1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com 2606:4700:4700::1111#cloudflare-dns.com 2606:4700:4700::1001#cloudflare-dns.com
@@ -25,12 +31,24 @@ DNS={{ systemd_resolved_servers | join(" ") }}
 #DNS=
 {% endif %}
 {% if systemd_resolved_fallback_servers is defined %}
+{% if systemd_resolved_fallback_servers is iterable and
+      systemd_resolved_fallback_servers is not mapping and
+      systemd_resolved_fallback_servers is not string %}
 FallbackDNS={{ systemd_resolved_fallback_servers | join(" ") }}
+{% else %}
+FallbackDNS={{ systemd_resolved_fallback_servers }}
+{% endif %}
 {% else %}
 #FallbackDNS=1.1.1.1#cloudflare-dns.com 9.9.9.9#dns.quad9.net 8.8.8.8#dns.google 2606:4700:4700::1111#cloudflare-dns.com 2620:fe::9#dns.quad9.net 2001:4860:4860::8888#dns.google
 {% endif %}
 {% if systemd_resolved_domains is defined %}
+{% if systemd_resolved_domains is iterable and
+      systemd_resolved_domains is not mapping and
+      systemd_resolved_domains is not string %}
 Domains={{ systemd_resolved_domains | join(" ") }}
+{% else %}
+Domains={{ systemd_resolved_domains }}
+{% endif %}
 {% else %}
 #Domains=
 {% endif %}
