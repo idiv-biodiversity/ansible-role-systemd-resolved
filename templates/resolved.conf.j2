@@ -35,37 +35,65 @@ Domains={{ systemd_resolved_domains | join(" ") }}
 #Domains=
 {% endif %}
 {% if systemd_resolved_dnssec is defined %}
+{% if systemd_resolved_dnssec is boolean %}
+DNSSEC={{ systemd_resolved_dnssec | ternary('yes', 'no') }}
+{% else %}
 DNSSEC={{ systemd_resolved_dnssec }}
+{% endif %}
 {% else %}
 #DNSSEC=no
 {% endif %}
 {% if systemd_resolved_dns_over_tls is defined %}
+{% if systemd_resolved_dns_over_tls is boolean %}
+DNSOverTLS={{ systemd_resolved_dns_over_tls | ternary('yes', 'no') }}
+{% else %}
 DNSOverTLS={{ systemd_resolved_dns_over_tls }}
+{% endif %}
 {% else %}
 #DNSOverTLS=no
 {% endif %}
 {% if systemd_resolved_multicast_dns is defined %}
+{% if systemd_resolved_multicast_dns is boolean %}
+MulticastDNS={{ systemd_resolved_multicast_dns | ternary('yes', 'no') }}
+{% else %}
 MulticastDNS={{ systemd_resolved_multicast_dns }}
+{% endif %}
 {% else %}
 #MulticastDNS=yes
 {% endif %}
 {% if systemd_resolved_llmnr is defined %}
+{% if systemd_resolved_llmnr is boolean %}
+LLMNR={{ systemd_resolved_llmnr | ternary('yes', 'no') }}
+{% else %}
 LLMNR={{ systemd_resolved_llmnr }}
+{% endif %}
 {% else %}
 #LLMNR=yes
 {% endif %}
 {% if systemd_resolved_cache is defined %}
+{% if systemd_resolved_cache is boolean %}
 Cache={{ systemd_resolved_cache | ternary('yes', 'no') }}
+{% else %}
+Cache={{ systemd_resolved_cache }}
+{% endif %}
 {% else %}
 #Cache=yes
 {% endif %}
 {% if systemd_resolved_cache_from_localhost is defined %}
+{% if systemd_resolved_cache_from_localhost is boolean %}
 CacheFromLocalhost={{ systemd_resolved_cache_from_localhost | ternary('yes', 'no') }}
+{% else %}
+CacheFromLocalhost={{ systemd_resolved_cache_from_localhost }}
+{% endif %}
 {% else %}
 #CacheFromLocalhost=no
 {% endif %}
 {% if systemd_resolved_dns_stub_listener is defined %}
+{% if systemd_resolved_dns_stub_listener is boolean %}
+DNSStubListener={{ systemd_resolved_dns_stub_listener | ternary('yes', 'no') }}
+{% else %}
 DNSStubListener={{ systemd_resolved_dns_stub_listener }}
+{% endif %}
 {% else %}
 #DNSStubListener=yes
 {% endif %}
@@ -75,12 +103,20 @@ DNSStubListenerExtra={{ systemd_resolved_dns_stub_listener_extra }}
 #DNSStubListenerExtra=
 {% endif %}
 {% if systemd_resolved_read_etc_hosts is defined %}
+{% if systemd_resolved_read_etc_hosts is boolean %}
 ReadEtcHosts={{ systemd_resolved_read_etc_hosts | ternary('yes', 'no') }}
+{% else %}
+ReadEtcHosts={{ systemd_resolved_read_etc_hosts }}
+{% endif %}
 {% else %}
 #ReadEtcHosts=yes
 {% endif %}
 {% if systemd_resolved_resolve_unicast_single_label is defined %}
+{% if systemd_resolved_resolve_unicast_single_label is boolean %}
 ResolveUnicastSingleLabel={{ systemd_resolved_resolve_unicast_single_label | ternary('yes', 'no') }}
+{% else %}
+ResolveUnicastSingleLabel={{ systemd_resolved_resolve_unicast_single_label }}
+{% endif %}
 {% else %}
 #ResolveUnicastSingleLabel=no
 {% endif %}
