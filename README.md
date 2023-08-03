@@ -49,13 +49,16 @@ systemd_resolved_domains:
 Other variables in the order they show up along with their default values:
 
 ```yml
-systemd_resolved_llmnr: 'yes'
-systemd_resolved_multicast_dns: 'yes'
-systemd_resolved_dnssec: 'allow-downgrade'
+systemd_resolved_dnssec: 'no'
 systemd_resolved_dns_over_tls: 'no'
+systemd_resolved_multicast_dns: 'yes'
+systemd_resolved_llmnr: 'yes'
 systemd_resolved_cache: yes
+systemd_resolved_cache_from_localhost: no
 systemd_resolved_dns_stub_listener: 'yes'
+systemd_resolved_dns_stub_listener_extra: ''
 systemd_resolved_read_etc_hosts: yes
+systemd_resolved_resolve_unicast_single_label: no
 ```
 
 For more information, read `man 5 resolved.conf`.
