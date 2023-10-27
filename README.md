@@ -77,7 +77,11 @@ Add to `requirements.yml`:
 ```yml
 ---
 
-- src: idiv_biodiversity.systemd_resolved
+roles:
+
+  - name: idiv_biodiversity.systemd_resolved
+    src: https://github.com/idiv-biodiversity/ansible-role-systemd-resolved
+    version: v1.2.0
 
 ...
 ```
