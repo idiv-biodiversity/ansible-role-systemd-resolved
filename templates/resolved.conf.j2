@@ -138,3 +138,8 @@ ResolveUnicastSingleLabel={{ systemd_resolved_resolve_unicast_single_label }}
 {% else %}
 #ResolveUnicastSingleLabel=no
 {% endif %}
+{% if systemd_resolved_stale_retention_sec is defined %}
+StaleRetentionSec={{ systemd_resolved_stale_retention_sec }}
+{% else %}
+#StaleRetentionSec=0
+{% endif %}

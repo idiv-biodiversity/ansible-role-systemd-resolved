@@ -59,6 +59,7 @@ systemd_resolved_dns_stub_listener: yes
 systemd_resolved_dns_stub_listener_extra: ''
 systemd_resolved_read_etc_hosts: yes
 systemd_resolved_resolve_unicast_single_label: no
+systemd_resolved_stale_retention_sec: 0
 ```
 
 For more information, read `man 5 resolved.conf`.
